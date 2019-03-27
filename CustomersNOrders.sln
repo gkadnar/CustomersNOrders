@@ -6,6 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custs.Model.Common", "Custs.Model.Common\Custs.Model.Common.csproj", "{44B205A9-97A1-42C7-B72E-56B98078A46B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custs.Model", "Custs.Model\Custs.Model.csproj", "{3E0D76A6-930D-4726-AFAE-19478F5B6CF8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{44B205A9-97A1-42C7-B72E-56B98078A46B} = {44B205A9-97A1-42C7-B72E-56B98078A46B}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyMainTester", "DummyMainTester\DummyMainTester.csproj", "{D335534D-1494-4CBE-952D-07A49FD80720}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{3E0D76A6-930D-4726-AFAE-19478F5B6CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E0D76A6-930D-4726-AFAE-19478F5B6CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E0D76A6-930D-4726-AFAE-19478F5B6CF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D335534D-1494-4CBE-952D-07A49FD80720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D335534D-1494-4CBE-952D-07A49FD80720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D335534D-1494-4CBE-952D-07A49FD80720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D335534D-1494-4CBE-952D-07A49FD80720}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

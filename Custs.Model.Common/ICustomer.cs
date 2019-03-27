@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Custs.Model.Common
 {
-    interface ICustomer
+    public interface ICustomer
     {
         // Primary key property
         int Id { get; set; }
@@ -15,7 +11,7 @@ namespace Custs.Model.Common
         string Name { get; set; }
         string Email { get; set; }
 
-        // Navigation properties
-        IList<IOrder> Orders { get; set; }
+        // Navigation properties - represents relationships
+        List<IOrder> Orders { get; set; }
     }
 }

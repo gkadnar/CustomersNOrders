@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Custs.Model.Common
+﻿namespace Custs.Model.Common
 {
-    interface IOrder
+    public interface IOrder
     {
         // Primary key property
         int Id { get; set; }
@@ -16,7 +10,7 @@ namespace Custs.Model.Common
         int Quantity { get; set; }
         decimal Price { get; set; }
 
-        // Navigation properties
+        // Navigation properties - represents relationships
         ICustomer Customer { get; set; }
     }
 }
