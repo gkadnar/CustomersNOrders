@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D335534D-1494-4CBE-952D-07A49FD80720}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>DummyMainTester</RootNamespace>
-    <AssemblyName>DummyMainTester</AssemblyName>
+    <ProjectGuid>{922F2146-560E-4229-BF44-078F4ABD868A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Custs.DAL</RootNamespace>
+    <AssemblyName>Custs.DAL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,25 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Configuration\Mapping\CustomerMap.cs" />
+    <Compile Include="Configuration\Mapping\OrderMap.cs" />
+    <Compile Include="EFDbContext.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Custs.DAL\Custs.DAL.csproj">
-      <Project>{922f2146-560e-4229-bf44-078f4abd868a}</Project>
-      <Name>Custs.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Custs.Model.Common\Custs.Model.Common.csproj">
-      <Project>{44b205a9-97a1-42c7-b72e-56b98078a46b}</Project>
-      <Name>Custs.Model.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Custs.Model\Custs.Model.csproj">
-      <Project>{3e0d76a6-930d-4726-afae-19478f5b6cf8}</Project>
-      <Name>Custs.Model</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
