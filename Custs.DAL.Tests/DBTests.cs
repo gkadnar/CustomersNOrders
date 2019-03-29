@@ -1,37 +1,40 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace Custs.DAL.Tests
 {
-    [TestClass]
-    public class CustomerTest
+    public class DBTests
     {
-        [TestMethod]
-        public void CustomerOrderTest()
+
+        [Fact]
+        public void CreateCustomersAndOrders()
         {
             Database.SetInitializer<EFDbContext>(new CreateDatabaseIfNotExists<EFDbContext>());
             using (var context = new EFDbContext())
             {
-                context.Database.Create();
+                context.Database.CreateIfNotExists();
                 CustomerEntity customer = new CustomerEntity
                 {
-                    Name = "Raviendra",
-                    Email = "raviendra@test.com",
+                    Name = "Goran Kadnar",
+                    Email = "gkadnar@test.com",
                     Orders = new List<OrderEntity>{
                                             new OrderEntity
                                             {
-                                                Quantity = 12,
-                                                Price =15,
+                                                Name = "PrviOrder",
+                                                Quantity =12,
+                                                Price =15
                                             },
                                             new OrderEntity
                                             {
+                                                Name = "DrugiOrder",
                                                 Quantity =10,
-                                                Price =25,
+                                                Price =25
                                             }
                                         }
                 };
-                //context.Entry(customer).State = System.Data.EntityState.Added;
+                context.Entry(customer).State = System.Data.Entity.EntityState.Added;
                 context.SaveChanges();
             }
         }

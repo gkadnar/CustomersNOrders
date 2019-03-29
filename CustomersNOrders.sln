@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyMainTester", "DummyMai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custs.DAL", "Custs.DAL\Custs.DAL.csproj", "{922F2146-560E-4229-BF44-078F4ABD868A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custs.DAL.Tests", "Custs.DAL.Tests\Custs.DAL.Tests.csproj", "{11064CF9-14DB-4C31-9A63-C9937EDA3BCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custs.DAL.Tests", "Custs.DAL.Tests\Custs.DAL.Tests.csproj", "{D0BA2563-7F7C-4DB7-BFD4-78FC72A6FF34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,10 +38,10 @@ Global
 		{922F2146-560E-4229-BF44-078F4ABD868A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{922F2146-560E-4229-BF44-078F4ABD868A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{922F2146-560E-4229-BF44-078F4ABD868A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11064CF9-14DB-4C31-9A63-C9937EDA3BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11064CF9-14DB-4C31-9A63-C9937EDA3BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11064CF9-14DB-4C31-9A63-C9937EDA3BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11064CF9-14DB-4C31-9A63-C9937EDA3BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0BA2563-7F7C-4DB7-BFD4-78FC72A6FF34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0BA2563-7F7C-4DB7-BFD4-78FC72A6FF34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0BA2563-7F7C-4DB7-BFD4-78FC72A6FF34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0BA2563-7F7C-4DB7-BFD4-78FC72A6FF34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

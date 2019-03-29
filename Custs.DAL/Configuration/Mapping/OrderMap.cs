@@ -15,17 +15,16 @@ namespace Custs.DAL.Configuration.Mapping
             Property(t => t.Name).IsRequired();                                                             // Name is not-null
             Property(t => t.Quantity).IsRequired();                                                         // Quantity is not-null
             Property(t => t.Price).IsRequired();                                                            // Quantity is not-null
-            Property(t => t.CustomerId).IsRequired();                                                       // CustomerId FK is mandatory
+            //Property(t => t.CustomerId).IsRequired();                                                       // CustomerId FK is mandatory
 
             // Table
             ToTable("Orders");
 
             // Relationships
-            HasRequired(t => t.Customer).WithMany(c => c.Orders).HasForeignKey(t => t.CustomerId).WillCascadeOnDelete(false);
+            HasRequired(t => t.Customer).WithMany(c => c.Orders).WillCascadeOnDelete(false);
 
             // HasRequired indicates that CustomerFK is mandatory for each Order.
             // WithMany indicates which navigation property in Customer entity contains the Many relationship.
-            // HasForeignKey indicates which property of Order is FK pointing to the Customer.
             // WillCascadeOnDelete configures whether or not cascade delete is on for the relationship.
         }
     }
