@@ -6,11 +6,14 @@ using System.Reflection;
 
 namespace Custs.DAL
 {
-    public class EFDbContext : DbContext
+    public class EFDbContext : DbContext, IDbContext
     {
         public EFDbContext() : base("name=DefaultConnection")
         {
         }
+
+        public DbSet<CustomerEntity> Customers { get; set; }
+        public DbSet<OrderEntity> Orders { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -24,5 +27,6 @@ namespace Custs.DAL
             }
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

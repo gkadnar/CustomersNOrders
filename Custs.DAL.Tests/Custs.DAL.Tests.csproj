@@ -76,7 +76,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBTestFixture.cs" />
     <Compile Include="DBTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
