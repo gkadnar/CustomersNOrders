@@ -10,6 +10,8 @@ namespace Custs.DAL
     {
         public EFDbContext() : base("name=DefaultConnection")
         {
+            //this.Configuration.LazyLoadingEnabled = false;
+            //this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<CustomerEntity> Customers { get; set; }

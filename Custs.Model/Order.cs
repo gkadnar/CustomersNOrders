@@ -1,7 +1,9 @@
 ﻿using Custs.Model.Common;
+using System.Runtime.Serialization;
 
 namespace Custs.Model
 {
+    [KnownType(typeof(Order))]
     public class Order : IOrder
     {
         // Primary key property

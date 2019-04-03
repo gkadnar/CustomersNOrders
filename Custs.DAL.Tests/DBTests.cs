@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Custs.DAL.Tests
 {
     public class DBTests
     {
+        private readonly ITestOutputHelper output;
 
+        public DBTests(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
         [Fact]
         public void CreateCustomersAndOrders()
         {
@@ -38,5 +45,26 @@ namespace Custs.DAL.Tests
                 context.SaveChanges();
             }
         }
+
+        [Fact]
+        public void ReadAllCustomers()
+        {
+            Database.SetInitializer<EFDbContext>(new CreateDatabaseIfNotExists<EFDbContext>());
+            using (var context = new EFDbContext())
+            {
+                context.Database.CreateIfNotExists();
+
+                List<CustomerEntity> custs = context.Customers.ToList();
+
+                context.SaveChanges();
+                
+                output.WriteLine("Read all customers ==> " + custs);
+                foreach(CustomerEntity c in custs)
+                {
+                    output.WriteLine("c ==> " + c.Id);
+                }
+            }
+        }
+
     }
 }

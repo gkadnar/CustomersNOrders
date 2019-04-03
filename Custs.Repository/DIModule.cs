@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Ninject;
 using Custs.Repository.Common;
+using Custs.Model.Common;
 
 namespace Custs.Repository
 {
@@ -26,6 +27,7 @@ namespace Custs.Repository
             Bind<IDbContext>().To<EFDbContext>().InSingletonScope();
             Bind<IRepository>().To<Repository>();
         }
+
 
         private MapperConfiguration CreateConfiguration()
         {

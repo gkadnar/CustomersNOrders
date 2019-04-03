@@ -4,15 +4,16 @@
 namespace Custs.WebAPI.App_Start
 {
     using System;
-    using System.Linq;
     using System.Web;
-    using Custs.Service;
-    using Custs.Service.Common;
+    using System.Web.Http;
+    
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Web.WebApi;
     using Ninject.Web.Common.WebHost;
+    using System.Linq;
 
     public static class NinjectWebCommon 
     {
@@ -45,12 +46,14 @@ namespace Custs.WebAPI.App_Start
             var settings = new NinjectSettings();
             settings.LoadExtensions = true;
             settings.ExtensionSearchPatterns = settings.ExtensionSearchPatterns.Union(new string[] { "Custs.*.dll" }).ToArray();
+
             var kernel = new StandardKernel(settings);
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
                 RegisterServices(kernel);
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch
@@ -67,7 +70,8 @@ namespace Custs.WebAPI.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             //kernel.Load(AppDomain.CurrentDomain.GetAssemblies());
-            //kernel.Bind<ICustomerService>().To<CustomerService>();
+            // kernel.Bind<Custs.Service.Common.ICustomerService>().To<Custs.Service.CustomerService>();
         }
+
     }
 }
