@@ -1,11 +1,12 @@
 ﻿using Custs.DAL.Entities;
 using Custs.Model.Common;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Custs.Repository.Common
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAll();
     }
 }

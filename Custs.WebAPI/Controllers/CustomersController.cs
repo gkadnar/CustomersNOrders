@@ -2,6 +2,7 @@
 using Custs.Service.Common;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Custs.WebAPI.Controllers
@@ -17,9 +18,10 @@ namespace Custs.WebAPI.Controllers
         }
 
         // GET api/values
-        public List<ICustomer> GetAllCustomers()
+        //public List<ICustomer> GetAllCustomers()
+        public async Task<IEnumerable<ICustomer>> GetAllCustomers()
         {
-            return Service.GetAllCustomers();
+            return await Service.GetAllCustomers();
         }
 
         public string GetTest()

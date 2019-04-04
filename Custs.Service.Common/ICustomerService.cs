@@ -1,10 +1,11 @@
 ﻿using Custs.Model.Common;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Custs.Service.Common
 {
     public interface ICustomerService
     {
-        List<ICustomer> GetAllCustomers();
+        Task<IEnumerable<ICustomer>> GetAllCustomers();
     }
 }

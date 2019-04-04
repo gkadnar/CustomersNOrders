@@ -3,6 +3,7 @@ using Custs.Service.Common;
 using System.Collections.Generic;
 using System.Linq;
 using Custs.Repository.Common;
+using System.Threading.Tasks;
 
 namespace Custs.Service
 {
@@ -19,9 +20,9 @@ namespace Custs.Service
             
         }
 
-        public List<ICustomer> GetAllCustomers()
+        public async Task<IEnumerable<ICustomer>> GetAllCustomers()
         {
-            return _repository.GetAll().ToList();
+            return await _repository.GetAll();
         }
 
         public string GetTest()
