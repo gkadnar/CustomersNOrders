@@ -1,14 +1,7 @@
 ﻿using Custs.DAL;
-using Custs.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using Ninject;
 using Custs.Repository.Common;
-using Custs.Model.Common;
 
 namespace Custs.Repository
 {
@@ -25,7 +18,7 @@ namespace Custs.Repository
                  new Mapper(mapperConfiguration, type => ctx.Kernel.Get(type)));
 
             Bind<IDbContext>().To<EFDbContext>().InSingletonScope();
-            Bind<IRepository>().To<Repository>();
+            Bind<ICustomerRepository>().To<CustomerRepository>();
         }
 
 

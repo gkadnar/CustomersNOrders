@@ -41,13 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICustomerRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Custs.DAL\Custs.DAL.csproj">
+      <Project>{922f2146-560e-4229-bf44-078f4abd868a}</Project>
+      <Name>Custs.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Custs.Model.Common\Custs.Model.Common.csproj">
       <Project>{44b205a9-97a1-42c7-b72e-56b98078a46b}</Project>
       <Name>Custs.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Custs.Model\Custs.Model.csproj">
+      <Project>{3e0d76a6-930d-4726-afae-19478f5b6cf8}</Project>
+      <Name>Custs.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

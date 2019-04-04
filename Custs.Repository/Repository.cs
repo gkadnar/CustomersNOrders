@@ -1,36 +1,26 @@
 ﻿using AutoMapper;
 using Custs.DAL;
-using Custs.Model.Common;
 using Custs.Repository.Common;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 
 namespace Custs.Repository
 {
-    public class Repository : IRepository
+    public abstract class Repository<T> : IRepository<T> where T : class
     {
-        
-        private readonly IDbContext _context;
-
+        private readonly IDbContext _dbContext;
         private readonly IMapper _automapper;
 
-        public Repository(IDbContext context, IMapper mapper)
+        protected Repository(IDbContext dbContext, IMapper mapper)
         {
-            this._context = context;
+            this._dbContext = dbContext;
             this._automapper = mapper;
         }
 
-        public List<ICustomer> GetAllCustomers()
+        public virtual IEnumerable<T> GetAll()
         {
-            var tmp2 = _context.Customers.ToList();
-
-            var tmp3 = _automapper.Map<IEnumerable<ICustomer>>(tmp2);
-
-            return new List<ICustomer>(tmp3);
-            //return new List<ICustomer>((List<ICustomer>)_automapper.Map<IEnumerable<CustomerEntity>>(_context.Customers.ToList()));
+            var res1 = _automapper.Map<IEnumerable<T>>(_dbContext.Customers.ToList());
+            return res1;
         }
     }
-
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Custs.Repository.Tests
+namespace Custs.CustomerRepository.Tests
 {
     public class Class1
     {

@@ -15,6 +15,6 @@ namespace Custs.Model
         public string Email { get; set; }
 
         // Navigation properties - represents relationships
-        // public List<IOrder> Orders { get; set; }
+        public List<IOrder> Orders { get; set; }
     }
 }
