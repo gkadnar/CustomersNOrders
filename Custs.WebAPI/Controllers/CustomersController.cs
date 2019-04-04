@@ -19,9 +19,7 @@ namespace Custs.WebAPI.Controllers
         // GET api/values
         public List<ICustomer> GetAllCustomers()
         {
-            var res = Service.GetAllCustomers();
-            Console.WriteLine("res => " + res);
-            return res;
+            return Service.GetAllCustomers();
         }
 
         public string GetTest()

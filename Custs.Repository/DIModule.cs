@@ -19,6 +19,7 @@ namespace Custs.Repository
 
             Bind<IDbContext>().To<EFDbContext>().InSingletonScope();
             Bind<ICustomerRepository>().To<CustomerRepository>();
+            Bind<IUnitOfWork>().To<UnitOfWork>();
         }
 
 

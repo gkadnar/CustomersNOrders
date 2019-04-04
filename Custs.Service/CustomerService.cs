@@ -10,10 +10,13 @@ namespace Custs.Service
     {
         
         private readonly ICustomerRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CustomerService(ICustomerRepository repository)
+        public CustomerService(ICustomerRepository repository, IUnitOfWork unitOfWork)
         {
-            this._repository = repository;
+            this._unitOfWork = unitOfWork;
+            this._repository = _unitOfWork.getCustomerRepository();
+            
         }
 
         public List<ICustomer> GetAllCustomers()

@@ -30,5 +30,9 @@ namespace Custs.DAL
             base.OnModelCreating(modelBuilder);
         }
 
+        public void commit()
+        {
+            base.SaveChanges();
+        }
     }
 }

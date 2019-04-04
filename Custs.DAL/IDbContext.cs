@@ -6,5 +6,7 @@ namespace Custs.DAL
     {
         DbSet<CustomerEntity> Customers { get; set; }
         DbSet<OrderEntity> Orders { get; set; }
+
+        void commit();
     }
 }
