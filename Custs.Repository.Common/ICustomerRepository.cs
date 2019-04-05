@@ -1,4 +1,5 @@
-﻿using Custs.Model.Common;
+﻿using Custs.DAL;
+using Custs.Model.Common;
 
 namespace Custs.Repository.Common
 {

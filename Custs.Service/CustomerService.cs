@@ -1,7 +1,6 @@
 ﻿using Custs.Model.Common;
 using Custs.Service.Common;
 using System.Collections.Generic;
-using System.Linq;
 using Custs.Repository.Common;
 using System.Threading.Tasks;
 
@@ -23,6 +22,16 @@ namespace Custs.Service
         public async Task<IEnumerable<ICustomer>> GetAllCustomers()
         {
             return await _repository.GetAll();
+        }
+
+        public async Task<ICustomer> GetCustomerById(long id)
+        {
+            return await _repository.GetById(id);
+        }
+
+        public void DeleteCustomerById(long id)
+        {
+            _repository.Delete(id);
         }
 
         public string GetTest()

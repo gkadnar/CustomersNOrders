@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace Custs.WebAPI.Controllers
 {
@@ -17,12 +18,28 @@ namespace Custs.WebAPI.Controllers
             this.Service = service;
         }
 
-        // GET api/values
-        //public List<ICustomer> GetAllCustomers()
+        [HttpGet]
+        [Route("getall")]
         public async Task<IEnumerable<ICustomer>> GetAllCustomers()
         {
             return await Service.GetAllCustomers();
         }
+
+        [HttpGet]
+        [Route("getbyid/{id}")]
+        public async Task<ICustomer> GetCustomerById(long id)
+        {
+            return await Service.GetCustomerById(id);
+        }
+
+        [HttpGet]
+        [Route("deletebyid/{id}")]
+        public Task<OkResult> DeleteCustomerById(long id)
+        {
+            Service.DeleteCustomerById(id);
+            return Task.FromResult(Ok());
+        }
+
 
         public string GetTest()
         {

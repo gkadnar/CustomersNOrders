@@ -21,7 +21,7 @@ namespace Custs.DAL.Configuration.Mapping
             ToTable("Orders");
 
             // Relationships
-            HasRequired(t => t.Customer).WithMany(c => c.Orders).WillCascadeOnDelete(false);
+            HasRequired(t => t.Customer).WithMany(c => c.Orders).WillCascadeOnDelete(true);
 
             // HasRequired indicates that CustomerFK is mandatory for each Order.
             // WithMany indicates which navigation property in Customer entity contains the Many relationship.

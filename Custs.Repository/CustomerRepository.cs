@@ -2,19 +2,15 @@
 using Custs.DAL;
 using Custs.Model.Common;
 using Custs.Repository.Common;
+using System.Data.Entity;
 
 namespace Custs.Repository
 {
-    public class CustomerRepository : Repository<ICustomer>, ICustomerRepository
+    public class CustomerRepository : Repository<ICustomer,CustomerEntity>, ICustomerRepository
     {
         
-        //private readonly IDbContext _context;
-        //private readonly IMapper _automapper;
-
         public CustomerRepository(IDbContext context, IMapper mapper) : base(context,mapper)
         {
-          //  this._context = context;
-            //this._automapper = mapper;
         }
 
     }

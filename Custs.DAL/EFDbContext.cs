@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Reflection;
+using Custs.DAL.Entities;
 
 namespace Custs.DAL
 {
@@ -33,6 +34,11 @@ namespace Custs.DAL
         public void commit()
         {
             base.SaveChanges();
+        }
+
+        public new IDbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
+        {
+            return base.Set<TEntity>();
         }
     }
 }
