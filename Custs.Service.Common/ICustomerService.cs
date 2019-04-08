@@ -9,5 +9,7 @@ namespace Custs.Service.Common
         Task<IEnumerable<ICustomer>> GetAllCustomers();
         Task<ICustomer> GetCustomerById(long id);
         void DeleteCustomerById(long id);
+        void CreateCustomer(ICustomer customer);
+        void UpdateCustomer(ICustomer customer);
     }
 }

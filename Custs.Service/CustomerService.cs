@@ -34,6 +34,17 @@ namespace Custs.Service
             _repository.Delete(id);
         }
 
+        public void CreateCustomer(ICustomer customer)
+        {
+            _repository.Add(customer);
+        }
+
+        public void UpdateCustomer(ICustomer customer)
+        {
+            _repository.Update(customer, customer.Id);
+            _unitOfWork.Commit();
+        }
+
         public string GetTest()
         {
             return "gkadnar";

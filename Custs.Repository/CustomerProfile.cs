@@ -14,10 +14,14 @@ namespace Custs.Repository
 
             CreateMap<ICustomer, Customer>().ReverseMap();
             CreateMap<CustomerEntity, ICustomer>().ReverseMap();
+            CreateMap<ICustomer, CustomerEntity>().ReverseMap();
+
+            /*
             CreateMap<ICustomer, CustomerEntity>()
                 .ForMember(dest => dest.Orders, opt => opt.Ignore())
                 .ReverseMap()
                 .ForSourceMember(src => src.Orders, opt => opt.DoNotValidate());
+                */
 
             /*
             CreateMap<CustomerEntity, Customer>()

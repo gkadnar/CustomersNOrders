@@ -10,5 +10,7 @@ namespace Custs.Repository.Common
         Task<IEnumerable<T>> GetAll();
         Task<T> GetById(long id);
         void Delete(long id);
+        void Add(T entity);
+        void Update(T entity, long id);
     }
 }

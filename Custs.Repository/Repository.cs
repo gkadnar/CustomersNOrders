@@ -46,5 +46,18 @@ namespace Custs.Repository
             ((DbContext)_dbContext).SaveChanges();
         }
 
+        public void Add(T entity)
+        {
+            var tentity = _automapper.Map<TEntity>(entity);
+            dbSet.Add(tentity);
+            ((DbContext)_dbContext).SaveChanges();
+        }
+
+        public void Update(T entity, long id)
+        {
+            var tentity = dbSet.Find(id);
+            tentity = _automapper.Map<T, TEntity>(entity, tentity);
+            ((DbContext)_dbContext).SaveChanges();
+        }
     }
 }
