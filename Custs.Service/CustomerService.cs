@@ -21,7 +21,7 @@ namespace Custs.Service
 
         public async Task<IEnumerable<ICustomer>> GetAllCustomers()
         {
-            return await _repository.GetAll();
+            return await _unitOfWork.getCustomerRepository().GetAll();
         }
 
         public async Task<ICustomer> GetCustomerById(long id)

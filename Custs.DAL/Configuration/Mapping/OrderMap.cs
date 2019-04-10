@@ -22,7 +22,7 @@ namespace Custs.DAL.Configuration.Mapping
 
             // Relationships
             HasRequired(t => t.Customer).WithMany(c => c.Orders).WillCascadeOnDelete(true);
-
+            
             // HasRequired indicates that CustomerFK is mandatory for each Order.
             // WithMany indicates which navigation property in Customer entity contains the Many relationship.
             // WillCascadeOnDelete configures whether or not cascade delete is on for the relationship.

@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Results;
 
 namespace Custs.WebAPI.Controllers
 {
     [RoutePrefix("api/customers")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CustomersController : ApiController
     {
 
