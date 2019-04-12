@@ -183,6 +183,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Custs.Common\Custs.Common.csproj">
+      <Project>{4295bf50-56ae-47b5-af77-333917a3116a}</Project>
+      <Name>Custs.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Custs.DAL\Custs.DAL.csproj">
       <Project>{922f2146-560e-4229-bf44-078f4abd868a}</Project>
       <Name>Custs.DAL</Name>

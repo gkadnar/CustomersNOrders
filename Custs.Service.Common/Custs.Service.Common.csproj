@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Custs.Common\Custs.Common.csproj">
+      <Project>{4295bf50-56ae-47b5-af77-333917a3116a}</Project>
+      <Name>Custs.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Custs.Model.Common\Custs.Model.Common.csproj">
       <Project>{44b205a9-97a1-42c7-b72e-56b98078a46b}</Project>
       <Name>Custs.Model.Common</Name>

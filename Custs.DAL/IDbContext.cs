@@ -1,4 +1,6 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Threading.Tasks;
 using Custs.DAL.Entities;
 
 namespace Custs.DAL
@@ -8,7 +10,6 @@ namespace Custs.DAL
         DbSet<CustomerEntity> Customers { get; set; }
         DbSet<OrderEntity> Orders { get; set; }
 
-        void commit();
         IDbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity;
     }
 }

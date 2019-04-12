@@ -22,7 +22,6 @@ namespace Custs.Repository
             Bind<IUnitOfWork>().To<UnitOfWork>();
         }
 
-
         private MapperConfiguration CreateConfiguration()
         {
             var config = new MapperConfiguration(cfg =>

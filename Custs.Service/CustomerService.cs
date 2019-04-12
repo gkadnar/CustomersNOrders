@@ -3,51 +3,53 @@ using Custs.Service.Common;
 using System.Collections.Generic;
 using Custs.Repository.Common;
 using System.Threading.Tasks;
+using System;
+using Custs.Common.Filters;
 
 namespace Custs.Service
 {
     public class CustomerService : ICustomerService
     {
         
-        private readonly ICustomerRepository _repository;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ICustomerRepository CustomerRepository;
 
-        public CustomerService(ICustomerRepository repository, IUnitOfWork unitOfWork)
+        public CustomerService(ICustomerRepository CustomerRepository)
         {
-            this._unitOfWork = unitOfWork;
-            this._repository = _unitOfWork.getCustomerRepository();
-            
+            this.CustomerRepository = CustomerRepository;
         }
 
-        public async Task<IEnumerable<ICustomer>> GetAllCustomers()
+        public async Task<IEnumerable<ICustomer>> GetAllCustomersAsync()
         {
-            return await _unitOfWork.getCustomerRepository().GetAll();
+            return await CustomerRepository.GetAllAsync();
         }
 
-        public async Task<ICustomer> GetCustomerById(long id)
+        public async Task<IEnumerable<ICustomer>> GetAllCustomersAsync(CustomersFilter filter)
         {
-            return await _repository.GetById(id);
+            return await CustomerRepository.GetAllAsync(filter);
         }
 
-        public void DeleteCustomerById(long id)
+        public async Task<ICustomer> GetCustomerByIdAsync(long id)
         {
-            _repository.Delete(id);
+            return await CustomerRepository.GetByIdAsync(id);
         }
 
-        public void CreateCustomer(ICustomer customer)
+        public async Task<int> DeleteCustomerByIdAsync(IEnumerable<long> ids)
         {
-            _repository.Add(customer);
+            var res = await CustomerRepository.DeleteAsync(ids);
+            return res;
         }
 
-        public void UpdateCustomer(ICustomer customer)
+        public async Task<int> CreateCustomerAsync(IEnumerable<ICustomer> customers)
         {
-            _repository.Update(customer, customer.Id);
-            _unitOfWork.Commit();
+            var res =  await CustomerRepository.AddAsync(customers);
+            return res;
         }
 
-        public string GetTest()
+        public async Task<int> UpdateCustomerAsync(int id,ICustomer customer)
         {
-            return "gkadnar";
+            var res =  await CustomerRepository.UpdateAsync(customer, id);
+            return res;
         }
+
     }
 }

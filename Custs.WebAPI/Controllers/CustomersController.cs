@@ -1,9 +1,10 @@
-﻿using Custs.Model;
+﻿using Custs.Common.Filters;
+using Custs.Model;
 using Custs.Model.Common;
 using Custs.Service.Common;
-using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -11,7 +12,10 @@ using System.Web.Http.Results;
 
 namespace Custs.WebAPI.Controllers
 {
-    [RoutePrefix("api/customers")]
+
+    /// <summary>
+    /// /api/customers endpoint
+    /// </summary>
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CustomersController : ApiController
     {
@@ -22,47 +26,85 @@ namespace Custs.WebAPI.Controllers
             this.Service = service;
         }
 
+        /// <summary>
+        /// GET /api/customers
+        /// Retrieve all customers : TODO make retrieve pageable and sortable
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        [Route("getall")]
-        public async Task<IEnumerable<ICustomer>> GetAllCustomers()
+        public async Task<HttpResponseMessage> GetAllCustomers()
         {
-            return await Service.GetAllCustomers();
+            var res = await Service.GetAllCustomersAsync();
+            return Request.CreateResponse(HttpStatusCode.OK,res);
         }
 
         [HttpGet]
-        [Route("getbyid/{id}")]
-        public async Task<ICustomer> GetCustomerById(long id)
+        public async Task<HttpResponseMessage> GetAllCustomers(string searchCustomer, int pageNumber = 1, int pageSize = 10, string ordering = "Name")
         {
-            return await Service.GetCustomerById(id);
+            CustomersFilter cFilter = new CustomersFilter(pageNumber,pageSize, ordering, searchCustomer);
+            var res = await Service.GetAllCustomersAsync(cFilter);
+            return Request.CreateResponse(HttpStatusCode.OK, res);
         }
 
+        /// <summary>
+        /// GET /api/customers/{id}
+        /// Retrieve customer by Id  
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
-        [Route("deletebyid/{id}")]
-        public Task<StatusCodeResult> DeleteCustomerById(long id)
+        public async Task<HttpResponseMessage> GetCustomerById(long id)
         {
-            Service.DeleteCustomerById(id);
-            return Task.FromResult(StatusCode(HttpStatusCode.OK));
+            var res = await Service.GetCustomerByIdAsync(id);
+            return Request.CreateResponse(HttpStatusCode.OK, res);
         }
 
+        /// <summary>
+        /// DELETE /api/customers/{id} 
+        /// Delete customer by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public async Task<HttpResponseMessage> DeleteCustomerById([FromUri]long id)
+        {
+            var res = await Service.DeleteCustomerByIdAsync(new long[] { id });
+            if (res >=1)
+            {
+                return Request.CreateResponse(HttpStatusCode.NoContent);
+            }
+            return Request.CreateResponse(HttpStatusCode.InternalServerError);
+        }
+
+        /// <summary>
+        /// Create customer endpoint
+        /// POST /api/customers
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
         [HttpPost]
-        [Route("createcustomer")]
-        public Task<StatusCodeResult> AddCustomer([FromBody] Customer customer)
+        public async Task<HttpResponseMessage> AddCustomer([FromBody] Customer[] customers)
         {
-            Service.CreateCustomer(customer);
-            return Task.FromResult(StatusCode(HttpStatusCode.Created));
+            if (customers == null || (customers != null && customers.Length == 0))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            var res = await Service.CreateCustomerAsync(customers);
+            return Request.CreateResponse(HttpStatusCode.Created,res);
         }
 
-        [HttpPost]
-        [Route("updatecustomer")]
-        public Task<StatusCodeResult> UpdateCustomer([FromBody] Customer customer)
+        /// <summary>
+        /// Update customer endpoint
+        /// PUT /api/customers
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public async Task<HttpResponseMessage> UpdateCustomer([FromUri]int id, [FromBody] Customer customer)
         {
-            Service.UpdateCustomer(customer);
-            return Task.FromResult(StatusCode(HttpStatusCode.OK));
-        }
-
-        public string GetTest()
-        {
-            return "gkadnar";
+            var res = await Service.UpdateCustomerAsync(id,customer);
+            return Request.CreateResponse(HttpStatusCode.OK,res);
         }
 
     }

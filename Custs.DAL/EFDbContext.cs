@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Reflection;
@@ -11,8 +12,6 @@ namespace Custs.DAL
     {
         public EFDbContext() : base("name=DefaultConnection")
         {
-            //this.Configuration.LazyLoadingEnabled = false;
-            //this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<CustomerEntity> Customers { get; set; }
@@ -31,14 +30,10 @@ namespace Custs.DAL
             base.OnModelCreating(modelBuilder);
         }
 
-        public void commit()
-        {
-            base.SaveChanges();
-        }
-
         public new IDbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
         {
             return base.Set<TEntity>();
         }
+
     }
 }

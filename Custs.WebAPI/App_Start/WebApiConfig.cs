@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace Custs.WebAPI
 {
@@ -18,7 +15,8 @@ namespace Custs.WebAPI
 
             config.Routes.MapHttpRoute(
                 name: "DefaultAPI",
-                routeTemplate: "api/{controller}/{action}/{id}",
+                //routeTemplate: "api/{controller}/{action}/{id}",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 
